@@ -32,7 +32,7 @@ RETVAL=0
 OPTIONS=""
 
 start() {
-        echo -n $"       Starting $prog:      "
+        echo -n $"Starting $prog:"
 
         if [[ -f ${pidfile} ]] ; then
             pid=$( cat $pidfile  )
@@ -45,7 +45,7 @@ start() {
         fi
         $myDaemon -p $pidfile -l $logfile $OPTIONS
         RETVAL=$?
-        [ $RETVAL = 0 ] && log_success_msg || log_failure_msg
+        #[ $RETVAL -eq 0 ] && log_success_msg || log_failure_msg
         echo
         return $RETVAL
 }
